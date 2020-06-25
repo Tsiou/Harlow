@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Harlow", "Harlow\Harlow.csproj", "{B3BC29FA-71EA-4A60-BE4E-70CFFC01CA38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Harlow", "Harlow\Harlow.csproj", "{B3BC29FA-71EA-4A60-BE4E-70CFFC01CA38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarlowUnitTests", "HarlowUnitTests\HarlowUnitTests.csproj", "{12E562F5-AEF0-4AA4-BA90-8C0A9EC67043}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HarlowUnitTests", "HarlowUnitTests\HarlowUnitTests.csproj", "{12E562F5-AEF0-4AA4-BA90-8C0A9EC67043}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarlowConsoleTestbed", "HarlowConsoleTestbed\HarlowConsoleTestbed.csproj", "{A6814B45-E58A-41B6-A432-F0F6C67738D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HarlowConsoleTestbed", "HarlowConsoleTestbed\HarlowConsoleTestbed.csproj", "{A6814B45-E58A-41B6-A432-F0F6C67738D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
