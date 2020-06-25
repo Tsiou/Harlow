@@ -2,14 +2,16 @@
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Harlow;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace HarlowUnitTests
 {
     [TestClass]
     public class PointTest
     {
-        string pointFile = String.Format("..{0}..{0}Shapefiles{0}Point{0}builtupp_usa.shp", Path.DirectorySeparatorChar);
-        
+        string pointFile = string.Format("..{0}..{0}..{0}Shapefiles{0}Point{0}builtupp_usa.shp", Path.DirectorySeparatorChar);
+
         [TestMethod]
         public void USGS_CitiesAndTowns()
         {
@@ -19,7 +21,9 @@ namespace HarlowUnitTests
             string json = reader.FeaturesAsJson();
             File.WriteAllText("point.json", reader.FeatureAsJson(42));
 
-            Assert.AreEqual(6062745, json.Length);
+            JArray jArr = (JArray)JsonConvert.DeserializeObject(json);
+            Assert.AreEqual(38187, jArr.Count);
+            
             Assert.AreEqual(38187, reader.Features.Length);
 
             Assert.AreEqual(157, reader.FeatureAsJson(0).Length);

@@ -1,14 +1,16 @@
 ﻿using System;
 using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Harlow;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace HarlowUnitTests
 {
     [TestClass]
     public class LineTest
     {
-        string lineFile = String.Format("..{0}..{0}Shapefiles{0}Line{0}tl_2014_06075_roads.shp", Path.DirectorySeparatorChar);
+        string lineFile = String.Format("..{0}..{0}..{0}Shapefiles{0}Line{0}tl_2014_06075_roads.shp", Path.DirectorySeparatorChar);
 
         [TestMethod]
         public void Tiger_CA_SanFran_Roads()
@@ -19,7 +21,9 @@ namespace HarlowUnitTests
             string json = reader.FeaturesAsJson();
             File.WriteAllText("line.json", reader.FeatureAsJson(42));
 
-            Assert.AreEqual(2166881, json.Length);
+            JArray jArr = (JArray)JsonConvert.DeserializeObject(json);
+            Assert.AreEqual(4589, jArr.Count);
+
             Assert.AreEqual(4589, reader.Features.Length);
 
             Assert.AreEqual(283, reader.FeatureAsJson(0).Length);

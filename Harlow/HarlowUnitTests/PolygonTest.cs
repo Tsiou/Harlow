@@ -2,13 +2,16 @@
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Harlow;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace HarlowUnitTests
 {
     [TestClass]
     public class PolygonTest
     {
-        string polyFile = String.Format("..{0}..{0}Shapefiles{0}Polygon{0}tl_2014_06_place.shp", Path.DirectorySeparatorChar);
+        string polyFile = string.Format("..{0}..{0}..{0}Shapefiles{0}Polygon{0}tl_2014_06_place.shp", Path.DirectorySeparatorChar);
 
         [TestMethod]
         public void Tiger_US_PlaceBoundaries()
@@ -19,7 +22,9 @@ namespace HarlowUnitTests
             string json = reader.FeaturesAsJson();
             File.WriteAllText("polygon.json", reader.FeatureAsJson(42));
 
-            Assert.AreEqual(25301992, json.Length);
+            JArray jArr = (JArray)JsonConvert.DeserializeObject(json);
+            Assert.AreEqual(1516, jArr.Count);
+
             Assert.AreEqual(1516, reader.Features.Length);
 
             Assert.AreEqual(4780, reader.FeatureAsJson(0).Length);
